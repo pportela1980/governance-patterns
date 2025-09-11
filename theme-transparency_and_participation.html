@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transparency and Participation – Governance Patterns</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+      background: #f4f6fa;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 1rem;
+    }
+    .deck {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: flex-start;
+    }
+    .card {
+      width: 260px;
+      height: 360px;
+      perspective: 1000px;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .card-front img {
+      max-width: 100%;
+      max-height: 160px;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .card-front.block {
+      background: linear-gradient(to bottom, #ffe6e6, #ffcccc);
+      border: 2px solid #cc0000;
+    }
+    .card-front.unblock {
+      background: linear-gradient(to bottom, #e6ffee, #ccffcc);
+      border: 2px solid #009933;
+    }
+    .card-back {
+      background: #ffffff;
+      transform: rotateY(180deg);
+      overflow-y: auto;
+      font-size: 0.9em;
+      padding: 1.2rem;
+    }
+    .related {
+      margin-top: 1rem;
+      font-style: italic;
+      font-size: 0.85em;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.95em;
+      text-decoration: none;
+      color: #333;
+    }
+    .back-btn:hover {
+      color: #0066cc;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-btn">← Back to homepage</a>
+  <h1>Transparency and Participation</h1>
+  <div class="deck">
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+            <strong>The Black Box Decision</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>The Black Box Decision</strong><br><br>
+            <b>Description:</b> Opaque decision-making erodes trust and excludes affected stakeholders.<br><br>
+            <b>Problem:</b> When decisions are made behind closed doors, trust is eroded and those affected feel excluded.<br><br>
+            <b>Solution:</b> A drive for efficiency at the expense of openness undermines accountability and inclusiveness.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Making Power Visible, Participation with Purpose</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+            <strong>Participation as Performance</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>Participation as Performance</strong><br><br>
+            <b>Description:</b> Superficial participation creates an illusion of inclusion.<br><br>
+            <b>Problem:</b> Superficial participatory processes give an appearance of inclusion while key decisions remain in the hands of a few.<br><br>
+            <b>Solution:</b> Exposes how performative participation leads to disengagement and cynicism when genuine influence is lacking.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Participation with Purpose, Entry by Relationship</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+            <strong>The Token Inclusion Trap</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>The Token Inclusion Trap</strong><br><br>
+            <b>Description:</b> Symbolic inclusion without real power-sharing undermines engagement.<br><br>
+            <b>Problem:</b> Inviting stakeholders only symbolically—without transferring real decision-making authority—leads to frustration and undermines trust.<br><br>
+            <b>Solution:</b> True inclusion requires transferring substantive decision-making authority rather than mere symbolism.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Participation with Purpose, Learn in Public</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Making Power Visible</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Making Power Visible</strong><br><br>
+            <b>Description:</b> Reveals hidden power dynamics to build trust and clarity.<br><br>
+            <b>Problem:</b> Hidden power dynamics can allow inequity to fester and erode trust across the organization.<br><br>
+            <b>Solution:</b> Actively reveal and clarify power structures via transparent role definitions, open decision-making, and visible accountability measures.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> The Black Box Decision, Participation with Purpose</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Participation with Purpose</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Participation with Purpose</strong><br><br>
+            <b>Description:</b> Structures engagement to align with individuals’ strengths and impact.<br><br>
+            <b>Problem:</b> Unstructured or superficial participation fails to tap into the full potential of a community’s skills and insights.<br><br>
+            <b>Solution:</b> Design engagement processes that align participation with personal strengths and interests, ensuring meaningful and impactful contributions.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Making Power Visible, Entry by Relationship, Learn in Public</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Entry by Relationship</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Entry by Relationship</strong><br><br>
+            <b>Description:</b> Uses relational entry to foster organic, trust-based inclusion.<br><br>
+            <b>Problem:</b> Formal, impersonal vetting processes can feel exclusionary and prevent valuable new perspectives from being integrated.<br><br>
+            <b>Solution:</b> Prioritize relational entry methods that build trust through personal connections, welcoming new voices organically.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Participation with Purpose, Making Power Visible</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Learn in Public</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Learn in Public</strong><br><br>
+            <b>Description:</b> Encourages sharing successes and setbacks to foster collective learning.<br><br>
+            <b>Problem:</b> When failures and challenges are hidden, organizations miss valuable opportunities for collective learning and growth.<br><br>
+            <b>Solution:</b> Share both successes and setbacks openly to build a culture of continuous learning and improvement.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Entry by Relationship, Participation with Purpose</div>
+            
+          </div>
+        </div>
+      </div>
+    
+  </div>
+</body>
+</html>

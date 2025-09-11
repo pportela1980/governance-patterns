@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Authority and Coordination Dynamics – Governance Patterns</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+      background: #f4f6fa;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 1rem;
+    }
+    .deck {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: flex-start;
+    }
+    .card {
+      width: 260px;
+      height: 360px;
+      perspective: 1000px;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .card-front img {
+      max-width: 100%;
+      max-height: 160px;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .card-front.block {
+      background: linear-gradient(to bottom, #ffe6e6, #ffcccc);
+      border: 2px solid #cc0000;
+    }
+    .card-front.unblock {
+      background: linear-gradient(to bottom, #e6ffee, #ccffcc);
+      border: 2px solid #009933;
+    }
+    .card-back {
+      background: #ffffff;
+      transform: rotateY(180deg);
+      overflow-y: auto;
+      font-size: 0.9em;
+      padding: 1.2rem;
+    }
+    .related {
+      margin-top: 1rem;
+      font-style: italic;
+      font-size: 0.85em;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.95em;
+      text-decoration: none;
+      color: #333;
+    }
+    .back-btn:hover {
+      color: #0066cc;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-btn">← Back to homepage</a>
+  <h1>Authority and Coordination Dynamics</h1>
+  <div class="deck">
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+              <img src="https://i.ibb.co/7xydgRqd/bottleneck.webp" alt="The Bottleneck Leader">
+            
+            <strong>The Bottleneck Leader</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>The Bottleneck Leader</strong><br><br>
+            <b>Description:</b> Centralizing leadership to manage decision overload leads to dependency.<br><br>
+            <b>Problem:</b> In rapidly evolving environments, decision-making can become overwhelming. Individuals feel lost without clear direction.<br><br>
+            <b>Solution:</b> Centralize power in a single leader who “keeps things organized,” which, however, creates stagnation, dependency, and risks burnout or authoritarianism.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Shared Stewardship, Consent, Not Consensus, Power as Resource, Not Authority, Right Decision, Right Level, Naming the Invisible</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+              <img src="https://i.ibb.co/3md02V2g/gatekeeper.webp" alt="The Gatekeeper Effect">
+            
+            <strong>The Gatekeeper Effect</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>The Gatekeeper Effect</strong><br><br>
+            <b>Description:</b> Filtering access in growing organizations concentrates control.<br><br>
+            <b>Problem:</b> As organizations expand, filtering access to key resources becomes challenging, leading to a few individuals or groups becoming de facto gatekeepers.<br><br>
+            <b>Solution:</b> The attempt to maintain quality ends up restricting participation and innovation by concentrating control.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Shared Stewardship, Making Power Visible, Participation with Purpose</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+              <img src="https://i.ibb.co/TB3d5gMg/cult-of-founder.webp" alt="The Cult of the Founder">
+            
+            <strong>The Cult of the Founder</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>The Cult of the Founder</strong><br><br>
+            <b>Description:</b> Charismatic leadership creates dependency and stifles succession.<br><br>
+            <b>Problem:</b> When groups form around a charismatic leader, power becomes overly concentrated, stifling governance evolution and suppressing succession.<br><br>
+            <b>Solution:</b> Dependency on a single figure limits fresh ideas and undermines distributed leadership.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Shared Stewardship, Right Decision, Right Level, Naming the Invisible</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+              <img src="https://i.ibb.co/vxCy4knn/shared-stewardship.webp" alt="Shared Stewardship">
+            
+            <strong>Shared Stewardship</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Shared Stewardship</strong><br><br>
+            <b>Description:</b> Rotates leadership roles to distribute power and enhance inclusivity.<br><br>
+            <b>Problem:</b> Centralized leadership leads to burnout and exclusion by confining decision-making to a small group.<br><br>
+            <b>Solution:</b> Rotate leadership roles and share responsibility across the community to distribute power, enhance resilience, and encourage inclusivity.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> The Bottleneck Leader, The Cult of the Founder, Consent, Not Consensus, Power as Resource, Not Authority</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+              <img src="https://i.ibb.co/SwQXFfWM/consent-not-consensus.webp" alt="Consent, Not Consensus">
+            
+            <strong>Consent, Not Consensus</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Consent, Not Consensus</strong><br><br>
+            <b>Description:</b> Uses consent-based decision-making to balance inclusion with action.<br><br>
+            <b>Problem:</b> Striving for full consensus can slow decisions and marginalize minority viewpoints, leading to ineffective, watered-down outcomes.<br><br>
+            <b>Solution:</b> Adopt a consent-based approach—“good enough for now, safe enough to try”—to balance inclusivity with timely action.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Shared Stewardship, Right Decision, Right Level, Naming the Invisible</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+              <img src="https://i.ibb.co/vxDsFgD2/power-as-resource.webp" alt="Power as Resource, Not Authority">
+            
+            <strong>Power as Resource, Not Authority</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Power as Resource, Not Authority</strong><br><br>
+            <b>Description:</b> Reframes power as enabling collective action rather than control.<br><br>
+            <b>Problem:</b> Viewing power solely as control creates hierarchical bottlenecks and undermines collaborative efforts.<br><br>
+            <b>Solution:</b> Reframe power as a resource that supports collective action, care, and innovation rather than serving as a tool for domination.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Shared Stewardship, Consent, Not Consensus, Right Decision, Right Level</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+              <img src="https://i.ibb.co/RG55Gh4k/right-decision.webp" alt="Right Decision, Right Level">
+            
+            <strong>Right Decision, Right Level</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Right Decision, Right Level</strong><br><br>
+            <b>Description:</b> Aligns decision-making authority with the group best suited to act.<br><br>
+            <b>Problem:</b> Decision-making at inappropriate levels creates bottlenecks or concentrates power inefficiently.<br><br>
+            <b>Solution:</b> Align decision-making authority with the group or domain most equipped to handle it, ensuring responsiveness and contextual insight.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Shared Stewardship, Consent, Not Consensus, Power as Resource, Not Authority</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+              <img src="https://i.ibb.co/Y6tnhYB/naming-the-invisible.webp" alt="Naming the Invisible">
+            
+            <strong>Naming the Invisible</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Naming the Invisible</strong><br><br>
+            <b>Description:</b> Makes implicit dynamics explicit to clarify roles and accountability.<br><br>
+            <b>Problem:</b> Hidden assumptions and unspoken agreements lead to confusion and misaligned expectations.<br><br>
+            <b>Solution:</b> Use visual tools and open dialogue to reveal and clarify invisible structures, roles, and accountability.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Shared Stewardship, Consent, Not Consensus, Right Decision, Right Level</div>
+            
+          </div>
+        </div>
+      </div>
+    
+  </div>
+</body>
+</html>

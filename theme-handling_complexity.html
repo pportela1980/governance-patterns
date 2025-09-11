@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Handling Complexity – Governance Patterns</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+      background: #f4f6fa;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 1rem;
+    }
+    .deck {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: flex-start;
+    }
+    .card {
+      width: 260px;
+      height: 360px;
+      perspective: 1000px;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .card-front img {
+      max-width: 100%;
+      max-height: 160px;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .card-front.block {
+      background: linear-gradient(to bottom, #ffe6e6, #ffcccc);
+      border: 2px solid #cc0000;
+    }
+    .card-front.unblock {
+      background: linear-gradient(to bottom, #e6ffee, #ccffcc);
+      border: 2px solid #009933;
+    }
+    .card-back {
+      background: #ffffff;
+      transform: rotateY(180deg);
+      overflow-y: auto;
+      font-size: 0.9em;
+      padding: 1.2rem;
+    }
+    .related {
+      margin-top: 1rem;
+      font-style: italic;
+      font-size: 0.85em;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.95em;
+      text-decoration: none;
+      color: #333;
+    }
+    .back-btn:hover {
+      color: #0066cc;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-btn">← Back to homepage</a>
+  <h1>Handling Complexity</h1>
+  <div class="deck">
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+              <img src="https://i.ibb.co/pFd35pq/DALL-E-2025-02-23-18-19-18-A-black-and-white-minimalist-icon-representing-The-Illusion-of-Simplicity.webp" alt="The Illusion of Simplicity">
+            
+            <strong>The Illusion of Simplicity</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>The Illusion of Simplicity</strong><br><br>
+            <b>Description:</b> Oversimplification masks the true complexity of challenges.<br><br>
+            <b>Problem:</b> In managing complexity, decision-makers oversimplify issues, masking the intricate nature of systemic challenges.<br><br>
+            <b>Solution:</b> Warns against simplistic narratives that lead to ill-prepared strategies, failing to address real-world intricacies.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Sense-Making First, Hold Multiple Truths</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+            <strong>The Predictive Fallacy</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>The Predictive Fallacy</strong><br><br>
+            <b>Description:</b> Rigid long-term plans assume a predictable future, reducing flexibility.<br><br>
+            <b>Problem:</b> Relying on fixed, long-term plans under the assumption of predictability can cause inflexibility when circumstances change.<br><br>
+            <b>Solution:</b> Highlights the dangers of over-planning and stresses the need for adaptable, responsive governance practices.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Reflect, Adapt, Iterate, Sense-Making First</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+            <strong>Over-Standardization Trap</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>Over-Standardization Trap</strong><br><br>
+            <b>Description:</b> Uniform policies stifle local adaptation and innovation.<br><br>
+            <b>Problem:</b> Imposing one-size-fits-all frameworks across diverse contexts can stifle local creativity and responsiveness.<br><br>
+            <b>Solution:</b> Recognize that uniform approaches often fail to account for local nuances, thereby curtailing innovation and responsiveness.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Permeable Boundaries, Entry by Relationship</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Sense-Making First</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Sense-Making First</strong><br><br>
+            <b>Description:</b> Prioritizes deep understanding of context before acting.<br><br>
+            <b>Problem:</b> In the rush to act, groups may bypass a deep understanding of the complex systems they operate within.<br><br>
+            <b>Solution:</b> Prioritize comprehensive sense-making—using systems mapping, storytelling, etc.—to ensure decisions are contextually informed.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Hold Multiple Truths, Patterns Before Solutions, The Illusion of Simplicity</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Hold Multiple Truths</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Hold Multiple Truths</strong><br><br>
+            <b>Description:</b> Encourages acknowledging diverse, even conflicting, perspectives.<br><br>
+            <b>Problem:</b> Binary, black-and-white thinking limits understanding and leads to polarized, narrow problem-solving.<br><br>
+            <b>Solution:</b> Encourage the simultaneous acknowledgment of multiple, even conflicting, perspectives to enrich decision-making.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Sense-Making First, Patterns Before Solutions</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Patterns Before Solutions</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Patterns Before Solutions</strong><br><br>
+            <b>Description:</b> Focuses on identifying recurring issues before jumping to action.<br><br>
+            <b>Problem:</b> Jumping straight to solutions without understanding underlying recurring issues results in misdiagnosed problems and ineffective interventions.<br><br>
+            <b>Solution:</b> Analyze recurring patterns to uncover root causes before committing to specific actions.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Sense-Making First, Hold Multiple Truths</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Start Small, Learn Fast</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Start Small, Learn Fast</strong><br><br>
+            <b>Description:</b> Promotes small, safe-to-fail experiments for rapid, iterative learning.<br><br>
+            <b>Problem:</b> Overly ambitious planning in complex environments can cause paralysis and miss opportunities for incremental learning.<br><br>
+            <b>Solution:</b> Implement small, safe-to-fail experiments that allow for rapid learning and iterative improvement.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Patterns Before Solutions, Stay in Inquiry</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Stay in Inquiry</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Stay in Inquiry</strong><br><br>
+            <b>Description:</b> Fosters a culture of continuous questioning and exploration.<br><br>
+            <b>Problem:</b> A rush to judgment may lead to decisions that ignore evolving circumstances, resulting in ineffective outcomes.<br><br>
+            <b>Solution:</b> Encourage continuous questioning and exploration to keep decisions responsive to change.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Start Small, Learn Fast, Stop, Reflect, Realign</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Stop, Reflect, Realign</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Stop, Reflect, Realign</strong><br><br>
+            <b>Description:</b> Builds in regular pauses for reflection and course correction.<br><br>
+            <b>Problem:</b> Continuous forward momentum without reflection can lead to missed learning opportunities and necessary course corrections.<br><br>
+            <b>Solution:</b> Build regular pauses into the governance process for reflection and realignment, ensuring ongoing responsiveness and effectiveness.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Stay in Inquiry, Slowing Down to Go Faster</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Slowing Down to Go Faster</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Slowing Down to Go Faster</strong><br><br>
+            <b>Description:</b> Advocates deliberate slowing to enable thoughtful analysis and sustainable outcomes.<br><br>
+            <b>Problem:</b> The pressure for immediate results often forces rushed, shallow decision-making that overlooks deeper issues.<br><br>
+            <b>Solution:</b> Deliberately slow down processes to allow for thoughtful analysis and more sustainable, long-term progress.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Stop, Reflect, Realign, Stay in Inquiry</div>
+            
+          </div>
+        </div>
+      </div>
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adaptability and Fitness to Changing Context – Governance Patterns</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+      background: #f4f6fa;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 1rem;
+    }
+    .deck {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: flex-start;
+    }
+    .card {
+      width: 260px;
+      height: 360px;
+      perspective: 1000px;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .card-front img {
+      max-width: 100%;
+      max-height: 160px;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .card-front.block {
+      background: linear-gradient(to bottom, #ffe6e6, #ffcccc);
+      border: 2px solid #cc0000;
+    }
+    .card-front.unblock {
+      background: linear-gradient(to bottom, #e6ffee, #ccffcc);
+      border: 2px solid #009933;
+    }
+    .card-back {
+      background: #ffffff;
+      transform: rotateY(180deg);
+      overflow-y: auto;
+      font-size: 0.9em;
+      padding: 1.2rem;
+    }
+    .related {
+      margin-top: 1rem;
+      font-style: italic;
+      font-size: 0.85em;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.95em;
+      text-decoration: none;
+      color: #333;
+    }
+    .back-btn:hover {
+      color: #0066cc;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-btn">← Back to homepage</a>
+  <h1>Adaptability and Fitness to Changing Context</h1>
+  <div class="deck">
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+            <strong>The Fragile Hierarchy</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>The Fragile Hierarchy</strong><br><br>
+            <b>Description:</b> Rigid hierarchies hinder innovation and adaptation.<br><br>
+            <b>Problem:</b> Rigid hierarchies become brittle when leaders and established structures resist change and dissent.<br><br>
+            <b>Solution:</b> Highlights the risk of centralized power that stifles innovation and impedes adaptive change.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Reflect, Adapt, Iterate, Accountability as Care</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+            <strong>The Vanity Metric Trap</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>The Vanity Metric Trap</strong><br><br>
+            <b>Description:</b> Overemphasis on superficial metrics obscures real impact.<br><br>
+            <b>Problem:</b> Focusing on superficial, quantifiable metrics can obscure deeper systemic issues and impede meaningful progress.<br><br>
+            <b>Solution:</b> Warns against mistaking vanity metrics for genuine impact and urges a focus on substantive outcomes.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Reflect, Adapt, Iterate, Story as Feedback</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+            <strong>Suppressing Dissent</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>Suppressing Dissent</strong><br><br>
+            <b>Description:</b> Silencing dissent prevents the healthy challenge necessary for adaptation.<br><br>
+            <b>Problem:</b> Treating internal disagreement as disruptive silences critical voices and stifles innovation.<br><br>
+            <b>Solution:</b> Marginalizing dissent prevents adaptive governance; open dialogue is needed to challenge and improve systems.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Reflect, Adapt, Iterate, Accountability as Care</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Reflect, Adapt, Iterate</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Reflect, Adapt, Iterate</strong><br><br>
+            <b>Description:</b> Establishes rhythms of reflection and iteration to adapt to challenges.<br><br>
+            <b>Problem:</b> Systems that ignore feedback become stagnant and unable to cope with evolving challenges.<br><br>
+            <b>Solution:</b> Establish regular reflection and iteration based on feedback, enabling continuous adaptation.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Story as Feedback, Accountability as Care, From Ownership to Stewardship</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Story as Feedback</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Story as Feedback</strong><br><br>
+            <b>Description:</b> Uses storytelling to capture qualitative insights alongside data.<br><br>
+            <b>Problem:</b> Relying solely on quantitative data can miss the nuanced, qualitative dynamics of organizational life.<br><br>
+            <b>Solution:</b> Incorporate storytelling to capture rich, qualitative feedback that enhances the decision-making process.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Reflect, Adapt, Iterate, Accountability as Care</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Accountability as Care</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Accountability as Care</strong><br><br>
+            <b>Description:</b> Reframes accountability as a supportive, caring practice.<br><br>
+            <b>Problem:</b> Traditional, punitive accountability models can damage relationships and inhibit collaboration.<br><br>
+            <b>Solution:</b> Reframe accountability as an act of care—emphasizing shared values and mutual responsibility—to foster a supportive, growth-oriented environment.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Reflect, Adapt, Iterate, Story as Feedback, From Ownership to Stewardship</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>From Ownership to Stewardship</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>From Ownership to Stewardship</strong><br><br>
+            <b>Description:</b> Shifts focus from individual ownership to collective stewardship.<br><br>
+            <b>Problem:</b> When work is “owned” by individuals, it can lead to silos and burnout rather than collective progress.<br><br>
+            <b>Solution:</b> Promote a stewardship model where responsibility is shared, encouraging collaboration and a sense of collective ownership over outcomes.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Accountability as Care, Reflect, Adapt, Iterate, Rest as Governance</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Rest as Governance</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Rest as Governance</strong><br><br>
+            <b>Description:</b> Integrates rest into governance to sustain creativity and trust.<br><br>
+            <b>Problem:</b> Continuous pressure and overwork erode creativity, trust, and the overall effectiveness of governance systems.<br><br>
+            <b>Solution:</b> Integrate practices that prioritize rest and regeneration as essential components of sustainable governance.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> From Ownership to Stewardship, Replenishment is a Practice</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Replenishment is a Practice</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Replenishment is a Practice</strong><br><br>
+            <b>Description:</b> Normalizes regular replenishment to prevent burnout and sustain engagement.<br><br>
+            <b>Problem:</b> Emotional and relational fatigue, if unaddressed, can lead to burnout and reduce organizational effectiveness.<br><br>
+            <b>Solution:</b> Normalize regular replenishment through retreats, rituals, or deliberate pauses to sustain energy and engagement.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Rest as Governance, From Ownership to Stewardship</div>
+            
+          </div>
+        </div>
+      </div>
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,563 @@
+{
+  "Authority and Coordination Dynamics": [
+    {
+      "label": "The Bottleneck Leader",
+      "type": "Block",
+      "image": "https://i.ibb.co/7xydgRqd/bottleneck.webp",
+      "description": "Centralizing leadership to manage decision overload leads to dependency.",
+      "problem": "In rapidly evolving environments, decision-making can become overwhelming. Individuals feel lost without clear direction.",
+      "solution": "Centralize power in a single leader who \u201ckeeps things organized,\u201d which, however, creates stagnation, dependency, and risks burnout or authoritarianism.",
+      "resources": NaN,
+      "related": [
+        "Shared Stewardship",
+        "Consent, Not Consensus",
+        "Power as Resource, Not Authority",
+        "Right Decision, Right Level",
+        "Naming the Invisible"
+      ]
+    },
+    {
+      "label": "The Gatekeeper Effect",
+      "type": "Block",
+      "image": "https://i.ibb.co/3md02V2g/gatekeeper.webp",
+      "description": "Filtering access in growing organizations concentrates control.",
+      "problem": "As organizations expand, filtering access to key resources becomes challenging, leading to a few individuals or groups becoming de facto gatekeepers.",
+      "solution": "The attempt to maintain quality ends up restricting participation and innovation by concentrating control.",
+      "resources": NaN,
+      "related": [
+        "Shared Stewardship",
+        "Making Power Visible",
+        "Participation with Purpose"
+      ]
+    },
+    {
+      "label": "The Cult of the Founder",
+      "type": "Block",
+      "image": "https://i.ibb.co/TB3d5gMg/cult-of-founder.webp",
+      "description": "Charismatic leadership creates dependency and stifles succession.",
+      "problem": "When groups form around a charismatic leader, power becomes overly concentrated, stifling governance evolution and suppressing succession.",
+      "solution": "Dependency on a single figure limits fresh ideas and undermines distributed leadership.",
+      "resources": NaN,
+      "related": [
+        "Shared Stewardship",
+        "Right Decision, Right Level",
+        "Naming the Invisible"
+      ]
+    },
+    {
+      "label": "Shared Stewardship",
+      "type": "Unblock",
+      "image": "https://i.ibb.co/vxCy4knn/shared-stewardship.webp",
+      "description": "Rotates leadership roles to distribute power and enhance inclusivity.",
+      "problem": "Centralized leadership leads to burnout and exclusion by confining decision-making to a small group.",
+      "solution": "Rotate leadership roles and share responsibility across the community to distribute power, enhance resilience, and encourage inclusivity.",
+      "resources": NaN,
+      "related": [
+        "The Bottleneck Leader",
+        "The Cult of the Founder",
+        "Consent, Not Consensus",
+        "Power as Resource, Not Authority"
+      ]
+    },
+    {
+      "label": "Consent, Not Consensus",
+      "type": "Unblock",
+      "image": "https://i.ibb.co/SwQXFfWM/consent-not-consensus.webp",
+      "description": "Uses consent-based decision-making to balance inclusion with action.",
+      "problem": "Striving for full consensus can slow decisions and marginalize minority viewpoints, leading to ineffective, watered-down outcomes.",
+      "solution": "Adopt a consent-based approach\u2014\u201cgood enough for now, safe enough to try\u201d\u2014to balance inclusivity with timely action.",
+      "resources": NaN,
+      "related": [
+        "Shared Stewardship",
+        "Right Decision, Right Level",
+        "Naming the Invisible"
+      ]
+    },
+    {
+      "label": "Power as Resource, Not Authority",
+      "type": "Unblock",
+      "image": "https://i.ibb.co/vxDsFgD2/power-as-resource.webp",
+      "description": "Reframes power as enabling collective action rather than control.",
+      "problem": "Viewing power solely as control creates hierarchical bottlenecks and undermines collaborative efforts.",
+      "solution": "Reframe power as a resource that supports collective action, care, and innovation rather than serving as a tool for domination.",
+      "resources": NaN,
+      "related": [
+        "Shared Stewardship",
+        "Consent, Not Consensus",
+        "Right Decision, Right Level"
+      ]
+    },
+    {
+      "label": "Right Decision, Right Level",
+      "type": "Unblock",
+      "image": "https://i.ibb.co/RG55Gh4k/right-decision.webp",
+      "description": "Aligns decision-making authority with the group best suited to act.",
+      "problem": "Decision-making at inappropriate levels creates bottlenecks or concentrates power inefficiently.",
+      "solution": "Align decision-making authority with the group or domain most equipped to handle it, ensuring responsiveness and contextual insight.",
+      "resources": NaN,
+      "related": [
+        "Shared Stewardship",
+        "Consent, Not Consensus",
+        "Power as Resource, Not Authority"
+      ]
+    },
+    {
+      "label": "Naming the Invisible",
+      "type": "Unblock",
+      "image": "https://i.ibb.co/Y6tnhYB/naming-the-invisible.webp",
+      "description": "Makes implicit dynamics explicit to clarify roles and accountability.",
+      "problem": "Hidden assumptions and unspoken agreements lead to confusion and misaligned expectations.",
+      "solution": "Use visual tools and open dialogue to reveal and clarify invisible structures, roles, and accountability.",
+      "resources": NaN,
+      "related": [
+        "Shared Stewardship",
+        "Consent, Not Consensus",
+        "Right Decision, Right Level"
+      ]
+    }
+  ],
+  "Handling Complexity": [
+    {
+      "label": "The Illusion of Simplicity",
+      "type": "Block",
+      "image": "https://i.ibb.co/pFd35pq/DALL-E-2025-02-23-18-19-18-A-black-and-white-minimalist-icon-representing-The-Illusion-of-Simplicity.webp",
+      "description": "Oversimplification masks the true complexity of challenges.",
+      "problem": "In managing complexity, decision-makers oversimplify issues, masking the intricate nature of systemic challenges.",
+      "solution": "Warns against simplistic narratives that lead to ill-prepared strategies, failing to address real-world intricacies.",
+      "resources": NaN,
+      "related": [
+        "Sense-Making First",
+        "Hold Multiple Truths"
+      ]
+    },
+    {
+      "label": "The Predictive Fallacy",
+      "type": "Block",
+      "image": "",
+      "description": "Rigid long-term plans assume a predictable future, reducing flexibility.",
+      "problem": "Relying on fixed, long-term plans under the assumption of predictability can cause inflexibility when circumstances change.",
+      "solution": "Highlights the dangers of over-planning and stresses the need for adaptable, responsive governance practices.",
+      "resources": NaN,
+      "related": [
+        "Reflect, Adapt, Iterate",
+        "Sense-Making First"
+      ]
+    },
+    {
+      "label": "Over-Standardization Trap",
+      "type": "Block",
+      "image": "",
+      "description": "Uniform policies stifle local adaptation and innovation.",
+      "problem": "Imposing one-size-fits-all frameworks across diverse contexts can stifle local creativity and responsiveness.",
+      "solution": "Recognize that uniform approaches often fail to account for local nuances, thereby curtailing innovation and responsiveness.",
+      "resources": NaN,
+      "related": [
+        "Permeable Boundaries",
+        "Entry by Relationship"
+      ]
+    },
+    {
+      "label": "Sense-Making First",
+      "type": "Unblock",
+      "image": "",
+      "description": "Prioritizes deep understanding of context before acting.",
+      "problem": "In the rush to act, groups may bypass a deep understanding of the complex systems they operate within.",
+      "solution": "Prioritize comprehensive sense-making\u2014using systems mapping, storytelling, etc.\u2014to ensure decisions are contextually informed.",
+      "resources": NaN,
+      "related": [
+        "Hold Multiple Truths",
+        "Patterns Before Solutions",
+        "The Illusion of Simplicity"
+      ]
+    },
+    {
+      "label": "Hold Multiple Truths",
+      "type": "Unblock",
+      "image": "",
+      "description": "Encourages acknowledging diverse, even conflicting, perspectives.",
+      "problem": "Binary, black-and-white thinking limits understanding and leads to polarized, narrow problem-solving.",
+      "solution": "Encourage the simultaneous acknowledgment of multiple, even conflicting, perspectives to enrich decision-making.",
+      "resources": NaN,
+      "related": [
+        "Sense-Making First",
+        "Patterns Before Solutions"
+      ]
+    },
+    {
+      "label": "Patterns Before Solutions",
+      "type": "Unblock",
+      "image": "",
+      "description": "Focuses on identifying recurring issues before jumping to action.",
+      "problem": "Jumping straight to solutions without understanding underlying recurring issues results in misdiagnosed problems and ineffective interventions.",
+      "solution": "Analyze recurring patterns to uncover root causes before committing to specific actions.",
+      "resources": NaN,
+      "related": [
+        "Sense-Making First",
+        "Hold Multiple Truths"
+      ]
+    },
+    {
+      "label": "Start Small, Learn Fast",
+      "type": "Unblock",
+      "image": "",
+      "description": "Promotes small, safe-to-fail experiments for rapid, iterative learning.",
+      "problem": "Overly ambitious planning in complex environments can cause paralysis and miss opportunities for incremental learning.",
+      "solution": "Implement small, safe-to-fail experiments that allow for rapid learning and iterative improvement.",
+      "resources": NaN,
+      "related": [
+        "Patterns Before Solutions",
+        "Stay in Inquiry"
+      ]
+    },
+    {
+      "label": "Stay in Inquiry",
+      "type": "Unblock",
+      "image": "",
+      "description": "Fosters a culture of continuous questioning and exploration.",
+      "problem": "A rush to judgment may lead to decisions that ignore evolving circumstances, resulting in ineffective outcomes.",
+      "solution": "Encourage continuous questioning and exploration to keep decisions responsive to change.",
+      "resources": NaN,
+      "related": [
+        "Start Small, Learn Fast",
+        "Stop, Reflect, Realign"
+      ]
+    },
+    {
+      "label": "Stop, Reflect, Realign",
+      "type": "Unblock",
+      "image": "",
+      "description": "Builds in regular pauses for reflection and course correction.",
+      "problem": "Continuous forward momentum without reflection can lead to missed learning opportunities and necessary course corrections.",
+      "solution": "Build regular pauses into the governance process for reflection and realignment, ensuring ongoing responsiveness and effectiveness.",
+      "resources": NaN,
+      "related": [
+        "Stay in Inquiry",
+        "Slowing Down to Go Faster"
+      ]
+    },
+    {
+      "label": "Slowing Down to Go Faster",
+      "type": "Unblock",
+      "image": "",
+      "description": "Advocates deliberate slowing to enable thoughtful analysis and sustainable outcomes.",
+      "problem": "The pressure for immediate results often forces rushed, shallow decision-making that overlooks deeper issues.",
+      "solution": "Deliberately slow down processes to allow for thoughtful analysis and more sustainable, long-term progress.",
+      "resources": NaN,
+      "related": [
+        "Stop, Reflect, Realign",
+        "Stay in Inquiry"
+      ]
+    }
+  ],
+  "Transparency and Participation": [
+    {
+      "label": "The Black Box Decision",
+      "type": "Block",
+      "image": "",
+      "description": "Opaque decision-making erodes trust and excludes affected stakeholders.",
+      "problem": "When decisions are made behind closed doors, trust is eroded and those affected feel excluded.",
+      "solution": "A drive for efficiency at the expense of openness undermines accountability and inclusiveness.",
+      "resources": NaN,
+      "related": [
+        "Making Power Visible",
+        "Participation with Purpose"
+      ]
+    },
+    {
+      "label": "Participation as Performance",
+      "type": "Block",
+      "image": "",
+      "description": "Superficial participation creates an illusion of inclusion.",
+      "problem": "Superficial participatory processes give an appearance of inclusion while key decisions remain in the hands of a few.",
+      "solution": "Exposes how performative participation leads to disengagement and cynicism when genuine influence is lacking.",
+      "resources": NaN,
+      "related": [
+        "Participation with Purpose",
+        "Entry by Relationship"
+      ]
+    },
+    {
+      "label": "The Token Inclusion Trap",
+      "type": "Block",
+      "image": "",
+      "description": "Symbolic inclusion without real power-sharing undermines engagement.",
+      "problem": "Inviting stakeholders only symbolically\u2014without transferring real decision-making authority\u2014leads to frustration and undermines trust.",
+      "solution": "True inclusion requires transferring substantive decision-making authority rather than mere symbolism.",
+      "resources": NaN,
+      "related": [
+        "Participation with Purpose",
+        "Learn in Public"
+      ]
+    },
+    {
+      "label": "Making Power Visible",
+      "type": "Unblock",
+      "image": "",
+      "description": "Reveals hidden power dynamics to build trust and clarity.",
+      "problem": "Hidden power dynamics can allow inequity to fester and erode trust across the organization.",
+      "solution": "Actively reveal and clarify power structures via transparent role definitions, open decision-making, and visible accountability measures.",
+      "resources": NaN,
+      "related": [
+        "The Black Box Decision",
+        "Participation with Purpose"
+      ]
+    },
+    {
+      "label": "Participation with Purpose",
+      "type": "Unblock",
+      "image": "",
+      "description": "Structures engagement to align with individuals\u2019 strengths and impact.",
+      "problem": "Unstructured or superficial participation fails to tap into the full potential of a community\u2019s skills and insights.",
+      "solution": "Design engagement processes that align participation with personal strengths and interests, ensuring meaningful and impactful contributions.",
+      "resources": NaN,
+      "related": [
+        "Making Power Visible",
+        "Entry by Relationship",
+        "Learn in Public"
+      ]
+    },
+    {
+      "label": "Entry by Relationship",
+      "type": "Unblock",
+      "image": "",
+      "description": "Uses relational entry to foster organic, trust-based inclusion.",
+      "problem": "Formal, impersonal vetting processes can feel exclusionary and prevent valuable new perspectives from being integrated.",
+      "solution": "Prioritize relational entry methods that build trust through personal connections, welcoming new voices organically.",
+      "resources": NaN,
+      "related": [
+        "Participation with Purpose",
+        "Making Power Visible"
+      ]
+    },
+    {
+      "label": "Learn in Public",
+      "type": "Unblock",
+      "image": "",
+      "description": "Encourages sharing successes and setbacks to foster collective learning.",
+      "problem": "When failures and challenges are hidden, organizations miss valuable opportunities for collective learning and growth.",
+      "solution": "Share both successes and setbacks openly to build a culture of continuous learning and improvement.",
+      "resources": NaN,
+      "related": [
+        "Entry by Relationship",
+        "Participation with Purpose"
+      ]
+    }
+  ],
+  "Adaptability and Fitness to Changing Context": [
+    {
+      "label": "The Fragile Hierarchy",
+      "type": "Block",
+      "image": "",
+      "description": "Rigid hierarchies hinder innovation and adaptation.",
+      "problem": "Rigid hierarchies become brittle when leaders and established structures resist change and dissent.",
+      "solution": "Highlights the risk of centralized power that stifles innovation and impedes adaptive change.",
+      "resources": NaN,
+      "related": [
+        "Reflect, Adapt, Iterate",
+        "Accountability as Care"
+      ]
+    },
+    {
+      "label": "The Vanity Metric Trap",
+      "type": "Block",
+      "image": "",
+      "description": "Overemphasis on superficial metrics obscures real impact.",
+      "problem": "Focusing on superficial, quantifiable metrics can obscure deeper systemic issues and impede meaningful progress.",
+      "solution": "Warns against mistaking vanity metrics for genuine impact and urges a focus on substantive outcomes.",
+      "resources": NaN,
+      "related": [
+        "Reflect, Adapt, Iterate",
+        "Story as Feedback"
+      ]
+    },
+    {
+      "label": "Suppressing Dissent",
+      "type": "Block",
+      "image": "",
+      "description": "Silencing dissent prevents the healthy challenge necessary for adaptation.",
+      "problem": "Treating internal disagreement as disruptive silences critical voices and stifles innovation.",
+      "solution": "Marginalizing dissent prevents adaptive governance; open dialogue is needed to challenge and improve systems.",
+      "resources": NaN,
+      "related": [
+        "Reflect, Adapt, Iterate",
+        "Accountability as Care"
+      ]
+    },
+    {
+      "label": "Reflect, Adapt, Iterate",
+      "type": "Unblock",
+      "image": "",
+      "description": "Establishes rhythms of reflection and iteration to adapt to challenges.",
+      "problem": "Systems that ignore feedback become stagnant and unable to cope with evolving challenges.",
+      "solution": "Establish regular reflection and iteration based on feedback, enabling continuous adaptation.",
+      "resources": NaN,
+      "related": [
+        "Story as Feedback",
+        "Accountability as Care",
+        "From Ownership to Stewardship"
+      ]
+    },
+    {
+      "label": "Story as Feedback",
+      "type": "Unblock",
+      "image": "",
+      "description": "Uses storytelling to capture qualitative insights alongside data.",
+      "problem": "Relying solely on quantitative data can miss the nuanced, qualitative dynamics of organizational life.",
+      "solution": "Incorporate storytelling to capture rich, qualitative feedback that enhances the decision-making process.",
+      "resources": NaN,
+      "related": [
+        "Reflect, Adapt, Iterate",
+        "Accountability as Care"
+      ]
+    },
+    {
+      "label": "Accountability as Care",
+      "type": "Unblock",
+      "image": "",
+      "description": "Reframes accountability as a supportive, caring practice.",
+      "problem": "Traditional, punitive accountability models can damage relationships and inhibit collaboration.",
+      "solution": "Reframe accountability as an act of care\u2014emphasizing shared values and mutual responsibility\u2014to foster a supportive, growth-oriented environment.",
+      "resources": NaN,
+      "related": [
+        "Reflect, Adapt, Iterate",
+        "Story as Feedback",
+        "From Ownership to Stewardship"
+      ]
+    },
+    {
+      "label": "From Ownership to Stewardship",
+      "type": "Unblock",
+      "image": "",
+      "description": "Shifts focus from individual ownership to collective stewardship.",
+      "problem": "When work is \u201cowned\u201d by individuals, it can lead to silos and burnout rather than collective progress.",
+      "solution": "Promote a stewardship model where responsibility is shared, encouraging collaboration and a sense of collective ownership over outcomes.",
+      "resources": NaN,
+      "related": [
+        "Accountability as Care",
+        "Reflect, Adapt, Iterate",
+        "Rest as Governance"
+      ]
+    },
+    {
+      "label": "Rest as Governance",
+      "type": "Unblock",
+      "image": "",
+      "description": "Integrates rest into governance to sustain creativity and trust.",
+      "problem": "Continuous pressure and overwork erode creativity, trust, and the overall effectiveness of governance systems.",
+      "solution": "Integrate practices that prioritize rest and regeneration as essential components of sustainable governance.",
+      "resources": NaN,
+      "related": [
+        "From Ownership to Stewardship",
+        "Replenishment is a Practice"
+      ]
+    },
+    {
+      "label": "Replenishment is a Practice",
+      "type": "Unblock",
+      "image": "",
+      "description": "Normalizes regular replenishment to prevent burnout and sustain engagement.",
+      "problem": "Emotional and relational fatigue, if unaddressed, can lead to burnout and reduce organizational effectiveness.",
+      "solution": "Normalize regular replenishment through retreats, rituals, or deliberate pauses to sustain energy and engagement.",
+      "resources": NaN,
+      "related": [
+        "Rest as Governance",
+        "From Ownership to Stewardship"
+      ]
+    }
+  ],
+  "Boundaries and Inclusion": [
+    {
+      "label": "Impenetrable Boundaries",
+      "type": "Block",
+      "image": "",
+      "description": "Rigid boundaries inhibit new participation and foster insularity.",
+      "problem": "Overly rigid boundaries can inhibit new participation and foster insularity, limiting growth and innovation.",
+      "solution": "Overprotecting group identity at the cost of openness leads to stagnation and groupthink.",
+      "resources": NaN,
+      "related": [
+        "Permeable Boundaries",
+        "Invite, Don\u2019t Oblige",
+        "Holding the Edge"
+      ]
+    },
+    {
+      "label": "Entry by Favoritism",
+      "type": "Block",
+      "image": "",
+      "description": "Favoritism in entry processes undermines transparency and diversity.",
+      "problem": "Selecting new members based on personal relationships or favoritism undermines transparency and curtails diversity.",
+      "solution": "Exposes the risks of informal, exclusionary practices and calls for merit- and relationship-based entry processes.",
+      "resources": NaN,
+      "related": [
+        "Entry by Relationship",
+        "Participation with Purpose"
+      ]
+    },
+    {
+      "label": "Closed Networks",
+      "type": "Block",
+      "image": "",
+      "description": "Exclusionary networks risk echo chambers and limit innovation.",
+      "problem": "Insular networks that exclude external voices risk becoming echo chambers, reinforcing biases and limiting innovation.",
+      "solution": "Highlights the dangers of maintaining overly exclusive networks that fail to adapt to external insights.",
+      "resources": NaN,
+      "related": [
+        "Permeable Boundaries",
+        "Invite, Don\u2019t Oblige",
+        "Holding the Edge"
+      ]
+    },
+    {
+      "label": "Permeable Boundaries",
+      "type": "Unblock",
+      "image": "",
+      "description": "Creates flexible boundaries that welcome new ideas while preserving core values.",
+      "problem": "Overly rigid boundaries hinder growth by preventing fresh perspectives from entering the group.",
+      "solution": "Establish flexible boundaries that allow new ideas to enter while preserving essential values and focus.",
+      "resources": NaN,
+      "related": [
+        "Impenetrable Boundaries",
+        "Closed Networks"
+      ]
+    },
+    {
+      "label": "Invite, Don\u2019t Oblige",
+      "type": "Unblock",
+      "image": "",
+      "description": "Encourages voluntary, meaningful engagement instead of forced participation.",
+      "problem": "Forcing participation can lead to disengagement and resentment, reducing the quality of involvement.",
+      "solution": "Create engagement processes that invite voluntary, meaningful contributions rather than mandating participation.",
+      "resources": NaN,
+      "related": [
+        "Permeable Boundaries",
+        "Holding the Edge"
+      ]
+    },
+    {
+      "label": "Holding the Edge",
+      "type": "Unblock",
+      "image": "",
+      "description": "Develops spaces for external voices to interact with core processes.",
+      "problem": "Organizations often struggle to integrate external perspectives without compromising internal cohesion.",
+      "solution": "Develop \u201cedge spaces\u201d where outside voices can interact with core processes, bringing fresh insights while maintaining group integrity.",
+      "resources": NaN,
+      "related": [
+        "Invite, Don\u2019t Oblige",
+        "Permeable Boundaries"
+      ]
+    },
+    {
+      "label": "Trust is the Work",
+      "type": "Unblock",
+      "image": "",
+      "description": "Emphasizes ongoing relational work as the foundation for effective governance.",
+      "problem": "Focusing solely on measurable outputs neglects the relational work that builds trust within an organization.",
+      "solution": "Make trust-building an explicit, ongoing practice by dedicating time and resources to relationship cultivation and transparent communication.",
+      "resources": NaN,
+      "related": [
+        "Holding the Edge",
+        "Permeable Boundaries"
+      ]
+    }
+  ]
+}

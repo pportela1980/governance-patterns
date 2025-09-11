@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Boundaries and Inclusion – Governance Patterns</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+      background: #f4f6fa;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 1rem;
+    }
+    .deck {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: flex-start;
+    }
+    .card {
+      width: 260px;
+      height: 360px;
+      perspective: 1000px;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .card-front img {
+      max-width: 100%;
+      max-height: 160px;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .card-front.block {
+      background: linear-gradient(to bottom, #ffe6e6, #ffcccc);
+      border: 2px solid #cc0000;
+    }
+    .card-front.unblock {
+      background: linear-gradient(to bottom, #e6ffee, #ccffcc);
+      border: 2px solid #009933;
+    }
+    .card-back {
+      background: #ffffff;
+      transform: rotateY(180deg);
+      overflow-y: auto;
+      font-size: 0.9em;
+      padding: 1.2rem;
+    }
+    .related {
+      margin-top: 1rem;
+      font-style: italic;
+      font-size: 0.85em;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.95em;
+      text-decoration: none;
+      color: #333;
+    }
+    .back-btn:hover {
+      color: #0066cc;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-btn">← Back to homepage</a>
+  <h1>Boundaries and Inclusion</h1>
+  <div class="deck">
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+            <strong>Impenetrable Boundaries</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>Impenetrable Boundaries</strong><br><br>
+            <b>Description:</b> Rigid boundaries inhibit new participation and foster insularity.<br><br>
+            <b>Problem:</b> Overly rigid boundaries can inhibit new participation and foster insularity, limiting growth and innovation.<br><br>
+            <b>Solution:</b> Overprotecting group identity at the cost of openness leads to stagnation and groupthink.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Permeable Boundaries, Invite, Don’t Oblige, Holding the Edge</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+            <strong>Entry by Favoritism</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>Entry by Favoritism</strong><br><br>
+            <b>Description:</b> Favoritism in entry processes undermines transparency and diversity.<br><br>
+            <b>Problem:</b> Selecting new members based on personal relationships or favoritism undermines transparency and curtails diversity.<br><br>
+            <b>Solution:</b> Exposes the risks of informal, exclusionary practices and calls for merit- and relationship-based entry processes.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Entry by Relationship, Participation with Purpose</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front block">
+            
+            <strong>Closed Networks</strong>
+            <div style="margin-top:0.5rem;">(Block)</div>
+          </div>
+          <div class="card-back">
+            <strong>Closed Networks</strong><br><br>
+            <b>Description:</b> Exclusionary networks risk echo chambers and limit innovation.<br><br>
+            <b>Problem:</b> Insular networks that exclude external voices risk becoming echo chambers, reinforcing biases and limiting innovation.<br><br>
+            <b>Solution:</b> Highlights the dangers of maintaining overly exclusive networks that fail to adapt to external insights.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Permeable Boundaries, Invite, Don’t Oblige, Holding the Edge</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Permeable Boundaries</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Permeable Boundaries</strong><br><br>
+            <b>Description:</b> Creates flexible boundaries that welcome new ideas while preserving core values.<br><br>
+            <b>Problem:</b> Overly rigid boundaries hinder growth by preventing fresh perspectives from entering the group.<br><br>
+            <b>Solution:</b> Establish flexible boundaries that allow new ideas to enter while preserving essential values and focus.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Impenetrable Boundaries, Closed Networks</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Invite, Don’t Oblige</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Invite, Don’t Oblige</strong><br><br>
+            <b>Description:</b> Encourages voluntary, meaningful engagement instead of forced participation.<br><br>
+            <b>Problem:</b> Forcing participation can lead to disengagement and resentment, reducing the quality of involvement.<br><br>
+            <b>Solution:</b> Create engagement processes that invite voluntary, meaningful contributions rather than mandating participation.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Permeable Boundaries, Holding the Edge</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Holding the Edge</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Holding the Edge</strong><br><br>
+            <b>Description:</b> Develops spaces for external voices to interact with core processes.<br><br>
+            <b>Problem:</b> Organizations often struggle to integrate external perspectives without compromising internal cohesion.<br><br>
+            <b>Solution:</b> Develop “edge spaces” where outside voices can interact with core processes, bringing fresh insights while maintaining group integrity.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Invite, Don’t Oblige, Permeable Boundaries</div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front unblock">
+            
+            <strong>Trust is the Work</strong>
+            <div style="margin-top:0.5rem;">(Unblock)</div>
+          </div>
+          <div class="card-back">
+            <strong>Trust is the Work</strong><br><br>
+            <b>Description:</b> Emphasizes ongoing relational work as the foundation for effective governance.<br><br>
+            <b>Problem:</b> Focusing solely on measurable outputs neglects the relational work that builds trust within an organization.<br><br>
+            <b>Solution:</b> Make trust-building an explicit, ongoing practice by dedicating time and resources to relationship cultivation and transparent communication.<br><br>
+            <b>Resources:</b> nan
+            
+              <div class="related"><b>Related Patterns:</b><br> Holding the Edge, Permeable Boundaries</div>
+            
+          </div>
+        </div>
+      </div>
+    
+  </div>
+</body>
+</html>
