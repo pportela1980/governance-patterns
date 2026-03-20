@@ -1,1 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Governance Pattern Language</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+:root {
+  --bg: #0e0e0f;
+  --surface: #17171a;
+  --surface2: #1f1f23;
+  --border: rgba(255,255,255,0.07);
+  --border-mid: rgba(255,255,255,0.13);
+  --text: #e8e6e0;
+  --muted: #7a7870;
+  --accent: #c8b89a;
+  --mono: 'DM Mono', monospace;
+  --serif: 'DM Serif Display', serif;
+  --block-color: #c0614a;
+  --block-bg: rgba(192,97,74,0.1);
+  --unblock-color: #5a9e7a;
+  --unblock-bg: rgba(90,158,122,0.1);
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--mono); min-height: 100vh; }
+
+/* ── HERO ── */
+.hero {
+  width: 100%; padding: 5rem 2rem 4rem;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.hero-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
+.hero h1 { font-family: var(--serif); font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 400; line-height: 1.08; margin-bottom: 1.5rem; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-desc { font-size: 14px; line-height: 1.85; color: var(--muted); max-width: 52ch; margin-bottom: 2.5rem; }
+
+.legend { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.leg { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+.leg-pill { padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+.leg-pill.block { background: var(--block-bg); color: var(--block-color); border: 1px solid rgba(192,97,74,0.3); }
+.leg-pill.unblock { background: var(--unblock-bg); color: var(--unblock-color); border: 1px solid rgba(90,158,122,0.3); }
+
+/* ── NAV ── */
+.theme-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(14,14,15,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex; align-items: center; gap: 0; overflow-x: auto;
+  scrollbar-width: none;
+}
+.theme-nav::-webkit-scrollbar { display: none; }
+.nav-link {
+  padding: 14px 16px; font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--muted); white-space: nowrap; background: transparent; border: none;
+  border-bottom: 2px solid transparent; cursor: pointer;
+  transition: color 0.15s, border-color 0.15s; margin-bottom: -1px;
+}
+.nav-link:hover { color: var(--text); }
+.nav-link.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ── THEME SECTIONS ── */
+.theme-section { padding: 4rem 2rem; border-bottom: 1px solid var(--border); max-width: 1200px; margin: 0 auto; }
+.theme-section.hidden { display: none; }
+
+.theme-header { margin-bottom: 3rem; }
+.theme-num { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+.theme-header h2 { font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; line-height: 1.15; }
+.theme-header h2 em { font-style: italic; color: var(--accent); }
+
+/* ── SUB-GROUPS ── */
+.pattern-group { margin-bottom: 2.5rem; }
+.group-label {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+}
+.group-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ── CARDS ── */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; }
+.card {
+  background: var(--surface); padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 1rem;
+  transition: background 0.15s;
+  cursor: default;
+}
+.card:hover { background: var(--surface2); }
+
+.card-top { display: flex; align-items: flex-start; gap: 12px; }
+.card-img { width: 48px; height: 48px; border-radius: 6px; object-fit: cover; flex-shrink: 0; background: var(--surface2); }
+.card-img-placeholder { width: 48px; height: 48px; border-radius: 6px; background: var(--surface2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.card-title-wrap { flex: 1; min-width: 0; }
+.card-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; line-height: 1.25; color: var(--text); margin-bottom: 5px; }
+.card-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 20px;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.card-badge.block { background: var(--block-bg); color: var(--block-color); border: 1px solid rgba(192,97,74,0.25); }
+.card-badge.unblock { background: var(--unblock-bg); color: var(--unblock-color); border: 1px solid rgba(90,158,122,0.25); }
+
+.card-desc { font-size: 12px; line-height: 1.7; color: var(--muted); font-style: italic; }
+
+.card-body { display: flex; flex-direction: column; gap: 0.75rem; }
+.card-field { }
+.card-field-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; opacity: 0.7; }
+.card-field-text { font-size: 12.5px; line-height: 1.65; color: var(--text); opacity: 0.85; }
+
+.card-related { margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+.card-related-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; opacity: 0.7; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.card-tag { padding: 2px 7px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 3px; font-size: 10px; color: var(--muted); }
+.card-tag-link {
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.card-tag-link:hover {
+  background: rgba(200,184,154,0.12);
+  color: var(--accent);
+  border-color: rgba(200,184,154,0.4);
+}
+
+@keyframes cardPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(200,184,154,0); background: var(--surface); }
+  20%  { box-shadow: 0 0 0 4px rgba(200,184,154,0.25); background: rgba(200,184,154,0.08); }
+  100% { box-shadow: 0 0 0 0 rgba(200,184,154,0); background: var(--surface); }
+}
+.card-highlight {
+  animation: cardPulse 1.8s ease-out forwards;
+}
+
+/* ── SSC FOOTER ── */
+.ssc-block {
+  max-width: 860px; margin: 4rem auto 0; padding: 2rem;
+  border: 1px solid var(--border-mid); border-radius: 8px; background: var(--surface);
+  display: flex; flex-direction: column; gap: 0.9rem;
+}
+.ssc-block .eyebrow { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+.ssc-block h2 { font-family: var(--serif); font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 400; }
+.ssc-block h2 em { font-style: italic; color: var(--accent); }
+.ssc-block p { font-size: 13.5px; line-height: 1.8; color: var(--muted); max-width: 60ch; }
+.ssc-link {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 0.4rem;
+  padding: 8px 18px; font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+  color: #0e0e0f; background: var(--accent); border-radius: 4px;
+  transition: opacity 0.15s; align-self: flex-start;
+}
+.ssc-link:hover { opacity: 0.85; }
+
+footer { padding: 2rem; text-align: center; font-size: 11px; letter-spacing: 0.07em; color: var(--muted); }
+footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 600px) {
+  .theme-section { padding: 3rem 1.25rem; }
+  .hero { padding: 3.5rem 1.25rem 3rem; }
+  .cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <p class="hero-eyebrow">School of Systems &amp; Complexity · SSC</p>
+  <h1>Governance<br><em>Pattern Language</em></h1>
+  <p class="hero-desc">An open library of observed patterns in network governance, gathered over 8 years of work across philanthropic and social change ecosystems. Each pattern names something real — something that blocks or enables how groups make decisions, distribute power, and adapt over time.</p>
+  <div class="legend">
+    <div class="leg"><span class="leg-pill block">Block</span> A pattern that creates problems — named so it can be recognised</div>
+    <div class="leg"><span class="leg-pill unblock">Unblock</span> A pattern that opens possibilities — a move worth making</div>
+  </div>
+</div>
+
+<nav class="theme-nav" id="theme-nav">
+  <button class="nav-link active" onclick="showTab('authority', this)">Authority</button>
+  <button class="nav-link" onclick="showTab('complexity', this)">Complexity</button>
+  <button class="nav-link" onclick="showTab('transparency', this)">Transparency</button>
+  <button class="nav-link" onclick="showTab('adaptability', this)">Adaptability</button>
+  <button class="nav-link" onclick="showTab('boundaries', this)">Boundaries</button>
+</nav>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- THEME 1: AUTHORITY -->
+<!-- ═══════════════════════════════════════ -->
+<section class="theme-section" id="authority">
+  <div class="theme-header">
+    <p class="theme-num">Theme 01</p>
+    <h2>Authority &amp; <em>Coordination Dynamics</em></h2>
+  </div>
+
+  <div class="pattern-group">
+    <div class="group-label">Blocks — patterns that concentrate and calcify power</div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <img class="card-img" src="https://i.ibb.co/7xydgRqd/bottleneck.webp" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="card-img-placeholder" style="display:none">⚡</div>
+          <div class="card-title-wrap">
+            <div class="card-name">The Bottleneck Leader</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Centralizing leadership to manage decision overload leads to dependency.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">In rapidly evolving environments, decision-making becomes overwhelming. Individuals feel lost without clear direction.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Power concentrates in a single leader who "keeps things organized" — which creates stagnation, dependency, and risks burnout or authoritarianism.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Shared Stewardship</span><span class="card-tag">Consent, Not Consensus</span><span class="card-tag">Power as Resource</span><span class="card-tag">Right Decision, Right Level</span><span class="card-tag">Naming the Invisible</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img class="card-img" src="https://i.ibb.co/3md02V2g/gatekeeper.webp" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="card-img-placeholder" style="display:none">🚪</div>
+          <div class="card-title-wrap">
+            <div class="card-name">The Gatekeeper Effect</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Filtering access in growing organizations concentrates control.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">As organizations expand, filtering access to key resources becomes challenging — a few individuals become de facto gatekeepers.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">The attempt to maintain quality ends up restricting participation and innovation by concentrating control.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Shared Stewardship</span><span class="card-tag">Making Power Visible</span><span class="card-tag">Participation with Purpose</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img class="card-img" src="https://i.ibb.co/TB3d5gMg/cult-of-founder.webp" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="card-img-placeholder" style="display:none">👑</div>
+          <div class="card-title-wrap">
+            <div class="card-name">The Cult of the Founder</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Charismatic leadership creates dependency and stifles succession.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">When groups form around a charismatic leader, power becomes overly concentrated, stifling governance evolution and suppressing succession.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Dependency on a single figure limits fresh ideas and undermines distributed leadership.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Shared Stewardship</span><span class="card-tag">Right Decision, Right Level</span><span class="card-tag">Naming the Invisible</span></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="pattern-group">
+    <div class="group-label">Unblocks — moves that distribute and revitalise authority</div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <img class="card-img" src="https://i.ibb.co/vxCy4knn/shared-stewardship.webp" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="card-img-placeholder" style="display:none">🤝</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Shared Stewardship</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Rotates leadership roles to distribute power and enhance inclusivity.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Centralized leadership leads to burnout and exclusion by confining decision-making to a small group.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Rotate leadership roles and share responsibility across the community to distribute power, enhance resilience, and encourage inclusivity.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">The Bottleneck Leader</span><span class="card-tag">The Cult of the Founder</span><span class="card-tag">Consent, Not Consensus</span><span class="card-tag">Power as Resource</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img class="card-img" src="https://i.ibb.co/SwQXFfWM/consent-not-consensus.webp" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="card-img-placeholder" style="display:none">✓</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Consent, Not Consensus</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Uses consent-based decision-making to balance inclusion with action.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Striving for full consensus can slow decisions and marginalize minority viewpoints, leading to ineffective, watered-down outcomes.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Adopt a consent-based approach — "good enough for now, safe enough to try" — to balance inclusivity with timely action.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Shared Stewardship</span><span class="card-tag">Right Decision, Right Level</span><span class="card-tag">Naming the Invisible</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img class="card-img" src="https://i.ibb.co/vxDsFgD2/power-as-resource.webp" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="card-img-placeholder" style="display:none">⚙</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Power as Resource, Not Authority</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Reframes power as enabling collective action rather than control.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Viewing power solely as control creates hierarchical bottlenecks and undermines collaborative efforts.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Reframe power as a resource that supports collective action, care, and innovation rather than serving as a tool for domination.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Shared Stewardship</span><span class="card-tag">Consent, Not Consensus</span><span class="card-tag">Right Decision, Right Level</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img class="card-img" src="https://i.ibb.co/RG55Gh4k/right-decision.webp" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="card-img-placeholder" style="display:none">🎯</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Right Decision, Right Level</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Aligns decision-making authority with the group best suited to act.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Decision-making at inappropriate levels creates bottlenecks or concentrates power inefficiently.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Align decision-making authority with the group or domain most equipped to handle it, ensuring responsiveness and contextual insight.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Shared Stewardship</span><span class="card-tag">Consent, Not Consensus</span><span class="card-tag">Power as Resource</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img class="card-img" src="https://i.ibb.co/Y6tnhYB/naming-the-invisible.webp" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="card-img-placeholder" style="display:none">👁</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Naming the Invisible</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Makes implicit dynamics explicit to clarify roles and accountability.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Hidden assumptions and unspoken agreements lead to confusion and misaligned expectations.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Use visual tools and open dialogue to reveal and clarify invisible structures, roles, and accountability.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Shared Stewardship</span><span class="card-tag">Consent, Not Consensus</span><span class="card-tag">Right Decision, Right Level</span></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- THEME 2: COMPLEXITY -->
+<!-- ═══════════════════════════════════════ -->
+<section class="theme-section hidden" id="complexity">
+  <div class="theme-header">
+    <p class="theme-num">Theme 02</p>
+    <h2>Handling <em>Complexity</em></h2>
+  </div>
+
+  <div class="pattern-group">
+    <div class="group-label">Blocks — patterns that oversimplify and over-plan</div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🌀</div>
+          <div class="card-title-wrap">
+            <div class="card-name">The Illusion of Simplicity</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Oversimplification masks the true complexity of challenges.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">Decision-makers oversimplify issues, masking the intricate nature of systemic challenges.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Simplistic narratives lead to ill-prepared strategies that fail to address real-world intricacies.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Sense-Making First</span><span class="card-tag">Hold Multiple Truths</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">📊</div>
+          <div class="card-title-wrap">
+            <div class="card-name">The Predictive Fallacy</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Rigid long-term plans assume a predictable future, reducing flexibility.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">Relying on fixed, long-term plans under the assumption of predictability causes inflexibility when circumstances change.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Over-planning and the need for adaptable, responsive governance practices are in direct tension.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Reflect, Adapt, Iterate</span><span class="card-tag">Sense-Making First</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">⚙</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Over-Standardization Trap</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Uniform policies stifle local adaptation and innovation.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">Imposing one-size-fits-all frameworks across diverse contexts stifles local creativity and responsiveness.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Uniform approaches fail to account for local nuances, curtailing innovation and responsiveness.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Permeable Boundaries</span><span class="card-tag">Entry by Relationship</span></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="pattern-group">
+    <div class="group-label">Unblocks — practices that build adaptive capacity</div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🧭</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Sense-Making First</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Prioritizes deep understanding of context before acting.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">In the rush to act, groups bypass a deep understanding of the complex systems they operate within.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Prioritize comprehensive sense-making — systems mapping, storytelling, dialogue — to ensure decisions are contextually informed.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Hold Multiple Truths</span><span class="card-tag">Patterns Before Solutions</span><span class="card-tag">The Illusion of Simplicity</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">◑</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Hold Multiple Truths</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Encourages acknowledging diverse, even conflicting, perspectives.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Binary, black-and-white thinking limits understanding and leads to polarized, narrow problem-solving.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Encourage the simultaneous acknowledgment of multiple, even conflicting, perspectives to enrich decision-making.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Sense-Making First</span><span class="card-tag">Patterns Before Solutions</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🔍</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Patterns Before Solutions</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Focuses on identifying recurring issues before jumping to action.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Jumping straight to solutions without understanding underlying recurring issues results in misdiagnosed problems.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Analyze recurring patterns to uncover root causes before committing to specific actions.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Sense-Making First</span><span class="card-tag">Hold Multiple Truths</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🧪</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Start Small, Learn Fast</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Promotes small, safe-to-fail experiments for rapid, iterative learning.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Overly ambitious planning in complex environments causes paralysis and misses opportunities for incremental learning.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Implement small, safe-to-fail experiments that allow for rapid learning and iterative improvement.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Patterns Before Solutions</span><span class="card-tag">Stay in Inquiry</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">❓</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Stay in Inquiry</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Fosters a culture of continuous questioning and exploration.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">A rush to judgment leads to decisions that ignore evolving circumstances, resulting in ineffective outcomes.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Encourage continuous questioning and exploration to keep decisions responsive to change.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Start Small, Learn Fast</span><span class="card-tag">Stop, Reflect, Realign</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">⏸</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Stop, Reflect, Realign</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Builds in regular pauses for reflection and course correction.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Continuous forward momentum without reflection leads to missed learning and necessary course corrections.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Build regular pauses into the governance process for reflection and realignment, ensuring ongoing responsiveness.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Stay in Inquiry</span><span class="card-tag">Slowing Down to Go Faster</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🐢</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Slowing Down to Go Faster</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Advocates deliberate slowing to enable thoughtful analysis and sustainable outcomes.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">The pressure for immediate results forces rushed, shallow decision-making that overlooks deeper issues.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Deliberately slow down processes to allow for thoughtful analysis and more sustainable, long-term progress.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Stop, Reflect, Realign</span><span class="card-tag">Stay in Inquiry</span></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- THEME 3: TRANSPARENCY -->
+<!-- ═══════════════════════════════════════ -->
+<section class="theme-section hidden" id="transparency">
+  <div class="theme-header">
+    <p class="theme-num">Theme 03</p>
+    <h2>Transparency &amp; <em>Participation</em></h2>
+  </div>
+
+  <div class="pattern-group">
+    <div class="group-label">Blocks — patterns that perform inclusion without delivering it</div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">📦</div>
+          <div class="card-title-wrap">
+            <div class="card-name">The Black Box Decision</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Opaque decision-making erodes trust and excludes affected stakeholders.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">When decisions are made behind closed doors, trust is eroded and those affected feel excluded.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">A drive for efficiency at the expense of openness undermines accountability and inclusiveness.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Making Power Visible</span><span class="card-tag">Participation with Purpose</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🎭</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Participation as Performance</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Superficial participation creates an illusion of inclusion.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">Superficial participatory processes give an appearance of inclusion while key decisions remain in the hands of a few.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Performative participation leads to disengagement and cynicism when genuine influence is lacking.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Participation with Purpose</span><span class="card-tag">Entry by Relationship</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🏷</div>
+          <div class="card-title-wrap">
+            <div class="card-name">The Token Inclusion Trap</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Symbolic inclusion without real power-sharing undermines engagement.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">Inviting stakeholders only symbolically — without transferring real decision-making authority — leads to frustration and erodes trust.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">True inclusion requires transferring substantive decision-making authority rather than mere symbolism.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Participation with Purpose</span><span class="card-tag">Learn in Public</span></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="pattern-group">
+    <div class="group-label">Unblocks — practices that build genuine openness</div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">💡</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Making Power Visible</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Reveals hidden power dynamics to build trust and clarity.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Hidden power dynamics allow inequity to fester and erode trust across the organization.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Actively reveal and clarify power structures via transparent role definitions, open decision-making, and visible accountability measures.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">The Black Box Decision</span><span class="card-tag">Participation with Purpose</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🎯</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Participation with Purpose</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Structures engagement to align with individuals' strengths and impact.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Unstructured or superficial participation fails to tap into the full potential of a community's skills and insights.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Design engagement processes that align participation with personal strengths and interests, ensuring meaningful and impactful contributions.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Making Power Visible</span><span class="card-tag">Entry by Relationship</span><span class="card-tag">Learn in Public</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🤝</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Entry by Relationship</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Uses relational entry to foster organic, trust-based inclusion.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Formal, impersonal vetting processes can feel exclusionary and prevent valuable new perspectives from being integrated.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Prioritize relational entry methods that build trust through personal connections, welcoming new voices organically.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Participation with Purpose</span><span class="card-tag">Making Power Visible</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">📢</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Learn in Public</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Encourages sharing successes and setbacks to foster collective learning.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">When failures and challenges are hidden, organizations miss valuable opportunities for collective learning and growth.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Share both successes and setbacks openly to build a culture of continuous learning and improvement.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Entry by Relationship</span><span class="card-tag">Participation with Purpose</span></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- THEME 4: ADAPTABILITY -->
+<!-- ═══════════════════════════════════════ -->
+<section class="theme-section hidden" id="adaptability">
+  <div class="theme-header">
+    <p class="theme-num">Theme 04</p>
+    <h2>Adaptability &amp; <em>Fitness to Context</em></h2>
+  </div>
+
+  <div class="pattern-group">
+    <div class="group-label">Blocks — patterns that calcify and resist change</div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🏗</div>
+          <div class="card-title-wrap">
+            <div class="card-name">The Fragile Hierarchy</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Rigid hierarchies hinder innovation and adaptation.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">Rigid hierarchies become brittle when leaders and established structures resist change and dissent.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Centralized power stifles innovation and impedes adaptive change.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Reflect, Adapt, Iterate</span><span class="card-tag">Accountability as Care</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">📈</div>
+          <div class="card-title-wrap">
+            <div class="card-name">The Vanity Metric Trap</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Overemphasis on superficial metrics obscures real impact.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">Focusing on superficial, quantifiable metrics obscures deeper systemic issues and impedes meaningful progress.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Mistaking vanity metrics for genuine impact leads away from substantive outcomes.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Reflect, Adapt, Iterate</span><span class="card-tag">Story as Feedback</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🔇</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Suppressing Dissent</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Silencing dissent prevents the healthy challenge necessary for adaptation.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">Treating internal disagreement as disruptive silences critical voices and stifles innovation.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Marginalizing dissent prevents adaptive governance; open dialogue is needed to challenge and improve systems.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Reflect, Adapt, Iterate</span><span class="card-tag">Accountability as Care</span></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="pattern-group">
+    <div class="group-label">Unblocks — practices that build regenerative capacity</div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🔄</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Reflect, Adapt, Iterate</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Establishes rhythms of reflection and iteration to adapt to challenges.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Systems that ignore feedback become stagnant and unable to cope with evolving challenges.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Establish regular reflection and iteration based on feedback, enabling continuous adaptation.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Story as Feedback</span><span class="card-tag">Accountability as Care</span><span class="card-tag">From Ownership to Stewardship</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">📖</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Story as Feedback</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Uses storytelling to capture qualitative insights alongside data.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Relying solely on quantitative data misses the nuanced, qualitative dynamics of organizational life.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Incorporate storytelling to capture rich, qualitative feedback that enhances the decision-making process.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Reflect, Adapt, Iterate</span><span class="card-tag">Accountability as Care</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">💚</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Accountability as Care</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Reframes accountability as a supportive, caring practice.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Traditional, punitive accountability models damage relationships and inhibit collaboration.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Reframe accountability as an act of care — emphasizing shared values and mutual responsibility — to foster a supportive, growth-oriented environment.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Reflect, Adapt, Iterate</span><span class="card-tag">Story as Feedback</span><span class="card-tag">From Ownership to Stewardship</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🌱</div>
+          <div class="card-title-wrap">
+            <div class="card-name">From Ownership to Stewardship</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Shifts focus from individual ownership to collective stewardship.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">When work is "owned" by individuals, it leads to silos and burnout rather than collective progress.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Promote a stewardship model where responsibility is shared, encouraging collaboration and collective ownership over outcomes.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Accountability as Care</span><span class="card-tag">Reflect, Adapt, Iterate</span><span class="card-tag">Rest as Governance</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🌙</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Rest as Governance</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Integrates rest into governance to sustain creativity and trust.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Continuous pressure and overwork erode creativity, trust, and the overall effectiveness of governance systems.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Integrate practices that prioritize rest and regeneration as essential components of sustainable governance.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">From Ownership to Stewardship</span><span class="card-tag">Replenishment is a Practice</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🔋</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Replenishment is a Practice</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Normalizes regular replenishment to prevent burnout and sustain engagement.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Emotional and relational fatigue, if unaddressed, leads to burnout and reduces organizational effectiveness.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Normalize regular replenishment through retreats, rituals, or deliberate pauses to sustain energy and engagement.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Rest as Governance</span><span class="card-tag">From Ownership to Stewardship</span></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- THEME 5: BOUNDARIES -->
+<!-- ═══════════════════════════════════════ -->
+<section class="theme-section hidden" id="boundaries">
+  <div class="theme-header">
+    <p class="theme-num">Theme 05</p>
+    <h2>Boundaries &amp; <em>Inclusion</em></h2>
+  </div>
+
+  <div class="pattern-group">
+    <div class="group-label">Blocks — patterns that close off and exclude</div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🧱</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Impenetrable Boundaries</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Rigid boundaries inhibit new participation and foster insularity.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">Overly rigid boundaries inhibit new participation and foster insularity, limiting growth and innovation.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Overprotecting group identity at the cost of openness leads to stagnation and groupthink.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Permeable Boundaries</span><span class="card-tag">Invite, Don't Oblige</span><span class="card-tag">Holding the Edge</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🎲</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Entry by Favoritism</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Favoritism in entry processes undermines transparency and diversity.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">Selecting new members based on personal relationships or favoritism undermines transparency and curtails diversity.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Informal, exclusionary practices call for merit- and relationship-based entry processes instead.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Entry by Relationship</span><span class="card-tag">Participation with Purpose</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🔒</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Closed Networks</div>
+            <span class="card-badge block">Block</span>
+          </div>
+        </div>
+        <div class="card-desc">Exclusionary networks risk echo chambers and limit innovation.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem</div><div class="card-field-text">Insular networks that exclude external voices risk becoming echo chambers, reinforcing biases and limiting innovation.</div></div>
+          <div class="card-field"><div class="card-field-label">How it plays out</div><div class="card-field-text">Overly exclusive networks fail to adapt to external insights and become brittle over time.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Permeable Boundaries</span><span class="card-tag">Invite, Don't Oblige</span><span class="card-tag">Holding the Edge</span></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="pattern-group">
+    <div class="group-label">Unblocks — practices that open without losing coherence</div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🌊</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Permeable Boundaries</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Creates flexible boundaries that welcome new ideas while preserving core values.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Overly rigid boundaries hinder growth by preventing fresh perspectives from entering the group.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Establish flexible boundaries that allow new ideas to enter while preserving essential values and focus.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Impenetrable Boundaries</span><span class="card-tag">Closed Networks</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">✉</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Invite, Don't Oblige</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Encourages voluntary, meaningful engagement instead of forced participation.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Forcing participation leads to disengagement and resentment, reducing the quality of involvement.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Create engagement processes that invite voluntary, meaningful contributions rather than mandating participation.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Permeable Boundaries</span><span class="card-tag">Holding the Edge</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🌐</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Holding the Edge</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Develops spaces for external voices to interact with core processes.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Organizations struggle to integrate external perspectives without compromising internal cohesion.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Develop "edge spaces" where outside voices can interact with core processes, bringing fresh insights while maintaining group integrity.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Invite, Don't Oblige</span><span class="card-tag">Permeable Boundaries</span></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-img-placeholder">🫂</div>
+          <div class="card-title-wrap">
+            <div class="card-name">Trust is the Work</div>
+            <span class="card-badge unblock">Unblock</span>
+          </div>
+        </div>
+        <div class="card-desc">Emphasizes ongoing relational work as the foundation for effective governance.</div>
+        <div class="card-body">
+          <div class="card-field"><div class="card-field-label">Problem it addresses</div><div class="card-field-text">Focusing solely on measurable outputs neglects the relational work that builds trust within an organization.</div></div>
+          <div class="card-field"><div class="card-field-label">The move</div><div class="card-field-text">Make trust-building an explicit, ongoing practice by dedicating time and resources to relationship cultivation and transparent communication.</div></div>
+        </div>
+        <div class="card-related"><div class="card-related-label">Related patterns</div><div class="card-tags"><span class="card-tag">Holding the Edge</span><span class="card-tag">Permeable Boundaries</span></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
+  <div class="ssc-block">
+    <p class="eyebrow">About this library</p>
+    <h2>School of Systems<br>&amp; <em>Complexity</em></h2>
+    <p>This pattern language was developed by the School of Systems and Complexity (SSC) over 8 years of practitioner work across philanthropic networks, peacebuilding ecosystems, and social change organisations. Patterns are not prescriptions — they are names for things that are already happening. The value of naming them is that you can then choose.</p>
+    <a class="ssc-link" href="https://systemsandcomplexity.school" target="_blank">Visit systemsandcomplexity.school &#8599;</a>
+  </div>
+</div>
+
+<footer>
+  &copy; School of Systems &amp; Complexity &mdash; <a href="https://systemsandcomplexity.school" target="_blank">systemsandcomplexity.school</a>
+</footer>
+
+<script>
+// ── slug helper ──────────────────────────────
+function slug(str) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+// ── on load: assign IDs, build map, wire tags ─
+document.addEventListener('DOMContentLoaded', () => {
+
+  // 1. Give every card an ID and build name→tabId map
+  const patternMap = {}; // slug → { tabId, cardEl }
+
+  document.querySelectorAll('.theme-section').forEach(section => {
+    const tabId = section.id;
+    section.querySelectorAll('.card').forEach(card => {
+      const nameEl = card.querySelector('.card-name');
+      if (!nameEl) return;
+      const name = nameEl.textContent.trim();
+      const id = 'card-' + slug(name);
+      card.id = id;
+      patternMap[slug(name)] = { tabId, cardEl: card };
+      // also index by a "short" version (strip "the ", "a " etc) for fuzzy matching
+      patternMap[slug(name.replace(/^(the|a|an) /i, ''))] = { tabId, cardEl: card };
+    });
+  });
+
+  // 2. Make all tags clickable
+  document.querySelectorAll('.card-tag').forEach(tag => {
+    const name = tag.textContent.trim();
+    const key = slug(name);
+    const shortKey = slug(name.replace(/^(the|a|an) /i, ''));
+    const target = patternMap[key] || patternMap[shortKey];
+
+    if (target) {
+      tag.classList.add('card-tag-link');
+      tag.title = 'Go to: ' + name;
+      tag.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToPattern(target.tabId, target.cardEl);
+      });
+    }
+  });
+});
+
+// ── navigate to a card ───────────────────────
+function goToPattern(tabId, cardEl) {
+  // switch tab
+  document.querySelectorAll('.theme-section').forEach(s => s.classList.add('hidden'));
+  document.getElementById(tabId).classList.remove('hidden');
+
+  // update nav button
+  document.querySelectorAll('.nav-link').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick') && btn.getAttribute('onclick').includes("'" + tabId + "'"));
+  });
+
+  // scroll card into view
+  setTimeout(() => {
+    cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // pulse highlight
+    cardEl.classList.add('card-highlight');
+    setTimeout(() => cardEl.classList.remove('card-highlight'), 1800);
+  }, 50);
+}
+
+// ── tab switcher ─────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.theme-section').forEach(s => s.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('theme-nav').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
